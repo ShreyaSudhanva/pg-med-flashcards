@@ -1241,8 +1241,86 @@ const ophthalmologyExpansionCards = [
   source: "pg-med-sources/eye",
 }));
 
+const entExpansionCards = [
+  ["ent", "Tympanic membrane landmarks", "Name key otoscopic landmarks of the tympanic membrane.", "Handle of malleus, lateral process of malleus, cone of light, pars tensa, pars flaccida, anterior and posterior malleolar folds.", ["ear", "anatomy"], "NEET"],
+  ["ent", "Middle ear contents", "List the main contents of the middle ear.", "Ossicles, stapedius, tensor tympani tendon, chorda tympani, tympanic plexus, air, and mucosal folds occupy the middle ear cleft.", ["ear", "anatomy"], "NEET"],
+  ["ent", "Eustachian tube function", "What are the functions of the Eustachian tube?", "Ventilation and pressure equalization, drainage of middle ear secretions, and protection from nasopharyngeal reflux.", ["ear", "eustachian tube"], "AIIMS"],
+  ["ent", "Acute otitis media", "What clinical findings suggest acute otitis media?", "Ear pain, fever, reduced hearing, and a congested bulging tympanic membrane with reduced mobility suggest acute otitis media.", ["ear", "infection"], "NEET"],
+  ["ent", "Otitis media with effusion", "What is otitis media with effusion?", "Middle-ear fluid without acute infection, causing conductive hearing loss and a dull or retracted tympanic membrane.", ["ear", "middle ear"], "NEET"],
+  ["ent", "CSOM tubotympanic", "What characterizes tubotympanic CSOM?", "It is the safe type, usually with central perforation, intermittent mucopurulent discharge, and conductive hearing loss.", ["ear", "CSOM"], "NEET"],
+  ["ent", "CSOM atticoantral", "Why is atticoantral CSOM unsafe?", "It commonly involves cholesteatoma, marginal or attic perforation, bone erosion, foul discharge, and risk of complications.", ["ear", "CSOM"], "AIIMS, NEET"],
+  ["ent", "Cholesteatoma", "What is cholesteatoma?", "Keratinizing squamous epithelium in the middle ear or mastoid that expands and erodes bone.", ["ear", "cholesteatoma"], "AIIMS"],
+  ["ent", "Mastoiditis", "Name warning features of acute mastoiditis.", "Postauricular pain, swelling, fever, protruding pinna, sagging canal wall, and persistent otorrhea after otitis media.", ["ear", "mastoid"], "NEET"],
+  ["ent", "Bezold abscess", "What is Bezold abscess?", "A deep neck abscess caused by mastoid infection tracking through the mastoid tip into the sternocleidomastoid region.", ["ear", "complications"], "AIIMS"],
+  ["ent", "Facial nerve in ear disease", "Why can CSOM cause facial palsy?", "Cholesteatoma, granulation, or infection can erode the facial canal or inflame a dehiscent facial nerve.", ["ear", "facial nerve"], "AIIMS"],
+  ["ent", "Otosclerosis", "What is otosclerosis?", "Abnormal bone remodeling around the stapes footplate causing progressive conductive hearing loss, often in young adults.", ["ear", "hearing loss"], "NEET"],
+  ["ent", "Carhart notch", "What is Carhart notch?", "An apparent dip in bone conduction around 2 kHz on audiometry, classically associated with stapes fixation in otosclerosis.", ["audiology", "otosclerosis"], "AIIMS"],
+  ["ent", "Presbycusis", "What is presbycusis?", "Age-related bilateral symmetric sensorineural hearing loss, usually affecting high frequencies first.", ["audiology", "SNHL"], "NEET"],
+  ["ent", "Noise-induced hearing loss", "What audiogram pattern suggests noise-induced hearing loss?", "A sensorineural notch around 4 kHz is typical, especially with chronic occupational noise exposure.", ["audiology", "occupational"], "NEET"],
+  ["ent", "Weber test", "How is Weber test interpreted?", "Sound lateralizes to the poorer ear in conductive loss and to the better ear in sensorineural loss.", ["audiology", "tuning fork"], "NEET"],
+  ["ent", "Rinne test", "How is Rinne test interpreted?", "Air conduction greater than bone conduction is positive; bone conduction greater than air conduction suggests conductive hearing loss.", ["audiology", "tuning fork"], "NEET"],
+  ["ent", "ABC test", "What does absolute bone conduction test compare?", "It compares the patient's bone conduction with the examiner's to identify sensorineural impairment.", ["audiology", "tuning fork"], "AIIMS"],
+  ["ent", "Pure tone audiometry", "What does pure tone audiometry measure?", "It measures hearing threshold across frequencies by air and bone conduction, helping classify and quantify hearing loss.", ["audiology", "audiometry"], "NEET"],
+  ["ent", "Tympanometry", "What does tympanometry assess?", "It assesses middle-ear pressure and compliance, useful for effusion, ossicular fixation, and tympanic membrane mobility.", ["audiology", "tympanometry"], "AIIMS"],
+  ["ent", "Meniere disease", "What is the classic triad of Meniere disease?", "Episodic vertigo, fluctuating sensorineural hearing loss, and tinnitus, often with aural fullness.", ["vertigo", "inner ear"], "NEET"],
+  ["ent", "BPPV", "What presentation suggests benign paroxysmal positional vertigo?", "Brief positional vertigo triggered by head movement with characteristic positional nystagmus.", ["vertigo", "BPPV"], "NEET"],
+  ["ent", "Vestibular neuritis", "How does vestibular neuritis differ from labyrinthitis?", "Vestibular neuritis causes acute vertigo without hearing loss; labyrinthitis includes cochlear symptoms such as hearing loss.", ["vertigo", "infection"], "AIIMS"],
+  ["ent", "Acoustic neuroma", "What early symptoms suggest vestibular schwannoma?", "Unilateral progressive sensorineural hearing loss, tinnitus, imbalance, and poor speech discrimination.", ["ear", "CPA tumor"], "AIIMS, NEET"],
+  ["ent", "Epistaxis site", "What is Little area?", "An anteroinferior nasal septal vascular area where Kiesselbach plexus commonly causes anterior epistaxis.", ["nose", "epistaxis"], "NEET"],
+  ["ent", "Epistaxis management", "What is first-line management of anterior epistaxis?", "Sit forward, pinch the soft nose, clear clots, apply topical vasoconstrictor or cautery if visible, and pack if needed.", ["nose", "emergency"], "NEET"],
+  ["ent", "Posterior epistaxis", "When should posterior epistaxis be suspected?", "Persistent heavy bleeding into the throat, older hypertensive patient, or failure of anterior measures suggests posterior source.", ["nose", "epistaxis"], "AIIMS"],
+  ["ent", "DNS symptoms", "What symptoms can deviated nasal septum cause?", "Nasal obstruction, recurrent sinusitis, epistaxis, headache, snoring, and contact-point symptoms may occur.", ["nose", "septum"], "NEET"],
+  ["ent", "Septal hematoma", "Why is septal hematoma urgent?", "It can cause septal cartilage necrosis, saddle-nose deformity, and abscess unless drained promptly.", ["nose", "trauma"], "AIIMS"],
+  ["ent", "Allergic rhinitis", "Name typical features of allergic rhinitis.", "Sneezing, watery rhinorrhea, nasal itching, obstruction, pale boggy turbinates, and allergic shiners.", ["nose", "rhinitis"], "NEET"],
+  ["ent", "Nasal polyps", "What are common associations of bilateral nasal polyps?", "Allergy, asthma, aspirin sensitivity, chronic rhinosinusitis, and cystic fibrosis in children.", ["nose", "polyps"], "NEET"],
+  ["ent", "Antrochoanal polyp", "What is antrochoanal polyp?", "A solitary polyp arising from maxillary sinus, passing through choana into nasopharynx, often in children or young adults.", ["nose", "polyps"], "AIIMS"],
+  ["ent", "Atrophic rhinitis", "What characterizes atrophic rhinitis?", "Roomy nasal cavities, crusting, foul smell, anosmia, and mucosal atrophy.", ["nose", "rhinitis"], "NEET"],
+  ["ent", "Rhinosporidiosis", "What is the typical nasal finding in rhinosporidiosis?", "A friable strawberry-like polypoidal mass with whitish sporangial dots and bleeding tendency.", ["nose", "granuloma"], "AIIMS"],
+  ["ent", "Acute sinusitis", "Name common features of acute bacterial rhinosinusitis.", "Purulent nasal discharge, facial pain or pressure, fever, nasal obstruction, and symptoms persisting or worsening after viral URI.", ["sinus", "infection"], "NEET"],
+  ["ent", "Maxillary sinus drainage", "Why does maxillary sinus drain poorly?", "Its natural ostium is high on the medial wall, so gravity does not assist drainage well.", ["sinus", "anatomy"], "AIIMS"],
+  ["ent", "Orbital cellulitis", "Name orbital complications of sinusitis.", "Preseptal cellulitis, orbital cellulitis, subperiosteal abscess, orbital abscess, and cavernous sinus thrombosis.", ["sinus", "complications"], "NEET"],
+  ["ent", "Fungal sinusitis", "Which patients are at risk for invasive fungal sinusitis?", "Diabetes, immunosuppression, neutropenia, transplantation, and steroid exposure increase risk.", ["sinus", "fungal"], "AIIMS"],
+  ["ent", "Tonsillitis", "What findings suggest acute tonsillitis?", "Sore throat, fever, odynophagia, tender cervical nodes, tonsillar congestion, enlargement, and exudates.", ["throat", "tonsil"], "NEET"],
+  ["ent", "Quinsy", "What is quinsy?", "Peritonsillar abscess causing severe sore throat, trismus, muffled voice, uvular deviation, and drooling.", ["throat", "deep neck infection"], "AIIMS, NEET"],
+  ["ent", "Adenoid hypertrophy", "What symptoms suggest adenoid hypertrophy?", "Nasal obstruction, mouth breathing, snoring, hyponasal speech, recurrent otitis media, and adenoid facies.", ["throat", "adenoid"], "NEET"],
+  ["ent", "Retropharyngeal abscess", "Why is retropharyngeal abscess commoner in children?", "Retropharyngeal lymph nodes are prominent in young children and may suppurate after upper airway infections.", ["throat", "deep neck infection"], "AIIMS"],
+  ["ent", "Ludwig angina", "What is Ludwig angina?", "Rapidly spreading cellulitis of submandibular, sublingual, and submental spaces, often odontogenic, with airway risk.", ["throat", "deep neck infection"], "AIIMS"],
+  ["ent", "Diphtheria throat", "What throat finding suggests diphtheria?", "A gray adherent pseudomembrane that bleeds on removal with toxic systemic features suggests diphtheria.", ["throat", "infection"], "NEET"],
+  ["ent", "Foreign body airway", "What presentation suggests laryngo-tracheobronchial foreign body?", "Sudden choking, cough, wheeze, stridor, unilateral reduced air entry, or recurrent pneumonia after aspiration.", ["airway", "foreign body"], "NEET"],
+  ["ent", "Laryngeal anatomy", "Which recurrent laryngeal nerve injury causes hoarseness?", "Unilateral recurrent laryngeal nerve palsy paralyzes ipsilateral vocal cord and commonly causes hoarseness.", ["larynx", "nerve"], "NEET"],
+  ["ent", "Superior laryngeal nerve", "What happens in external superior laryngeal nerve injury?", "Cricothyroid weakness causes impaired pitch control and voice fatigue, important for professional voice users.", ["larynx", "nerve"], "AIIMS"],
+  ["ent", "Acute epiglottitis", "Name classic features of acute epiglottitis.", "High fever, toxic appearance, drooling, dysphagia, muffled voice, tripod posture, and rapidly progressive airway obstruction.", ["larynx", "emergency"], "NEET"],
+  ["ent", "Croup", "What causes stridor in viral croup?", "Subglottic inflammation and edema narrow the pediatric airway, producing barking cough and inspiratory stridor.", ["pediatric ENT", "stridor"], "NEET"],
+  ["ent", "Laryngomalacia", "What is the typical presentation of laryngomalacia?", "Infant inspiratory stridor that worsens with feeding, crying, or supine position and often improves with age.", ["pediatric ENT", "stridor"], "AIIMS"],
+  ["ent", "Vocal nodule", "What causes vocal nodules?", "Chronic voice abuse causes bilateral symmetric nodules at the junction of anterior and middle thirds of vocal cords.", ["larynx", "voice"], "NEET"],
+  ["ent", "Reinke edema", "What is Reinke edema associated with?", "Smoking and voice abuse cause diffuse polypoid edema of vocal cords with low-pitched hoarse voice.", ["larynx", "voice"], "AIIMS"],
+  ["ent", "Laryngeal cancer", "What is the most common presenting symptom of glottic carcinoma?", "Persistent hoarseness is common because vocal cord involvement affects voice early.", ["head and neck", "larynx cancer"], "NEET"],
+  ["ent", "Nasopharyngeal carcinoma", "Name common presentations of nasopharyngeal carcinoma.", "Neck node metastasis, nasal obstruction, epistaxis, serous otitis media, cranial nerve palsy, and headache.", ["head and neck", "tumor"], "AIIMS"],
+  ["ent", "Juvenile nasopharyngeal angiofibroma", "What is classic for juvenile nasopharyngeal angiofibroma?", "Adolescent male with recurrent profuse epistaxis and nasal obstruction due to a vascular nasopharyngeal tumor.", ["nose", "tumor"], "AIIMS, NEET"],
+  ["ent", "Pleomorphic adenoma", "What is the commonest benign salivary gland tumor?", "Pleomorphic adenoma, most often affecting the parotid gland.", ["salivary gland", "tumor"], "NEET"],
+  ["ent", "Warthin tumor", "Which salivary tumor is linked to smoking and parotid tail?", "Warthin tumor is classically linked to older male smokers and often arises in the parotid tail.", ["salivary gland", "tumor"], "AIIMS"],
+  ["ent", "Parotid malignancy sign", "What sign suggests malignant parotid tumor?", "Facial nerve palsy, pain, fixation, skin involvement, rapid growth, or neck nodes suggest malignancy.", ["salivary gland", "tumor"], "NEET"],
+  ["ent", "Neck node levels", "Why are neck node levels important?", "They localize likely primary tumor sites and guide staging, imaging, neck dissection, and radiotherapy planning.", ["head and neck", "nodes"], "AIIMS"],
+  ["ent", "Branchial cyst", "Where is a second branchial cleft cyst usually located?", "Along the anterior border of sternocleidomastoid, commonly in the upper lateral neck.", ["neck swelling", "congenital"], "NEET"],
+  ["ent", "Thyroglossal cyst", "What movement is typical of thyroglossal duct cyst?", "It moves with swallowing and tongue protrusion because of attachment along the thyroglossal tract.", ["neck swelling", "congenital"], "NEET"],
+  ["ent", "Tracheostomy indication", "Name common indications for tracheostomy.", "Upper airway obstruction, prolonged ventilation, airway protection, secretion management, and some head-neck surgeries.", ["airway", "tracheostomy"], "NEET"],
+  ["ent", "Tracheostomy complication", "What is an early dangerous complication of tracheostomy?", "Hemorrhage, tube blockage, displacement, surgical emphysema, pneumothorax, and aspiration are early risks.", ["airway", "tracheostomy"], "AIIMS"],
+  ["ent", "Danger space", "Why is danger space clinically important?", "Infection can spread from pharynx to posterior mediastinum through the danger space.", ["deep neck spaces", "anatomy"], "AIIMS"],
+  ["ent", "ENT emergency priorities", "What is the first priority in ENT emergencies with stridor?", "Assess and secure the airway while minimizing distress and arranging expert airway support.", ["emergency", "airway"], "NEET"],
+].map((item, index) => ({
+  id: `ent-extra-${index + 1}`,
+  subject: item[0],
+  title: item[1],
+  prompt: item[2],
+  answer: item[3],
+  tags: item[4],
+  exam: item[5],
+  diagram: item[6] || null,
+  source: "pg-med-sources/ent",
+}));
+
 const customCards = JSON.parse(localStorage.getItem("customCards") || "[]");
-let cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...customCards];
+let cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...customCards];
 
 const state = {
   subject: "all",
@@ -1492,7 +1570,7 @@ function addAiCard(flashcard) {
     custom: true,
   };
   customCards.push(card);
-  cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...customCards];
+  cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...customCards];
   saveCustomCards();
   state.subject = subject;
   state.filter = "all";
