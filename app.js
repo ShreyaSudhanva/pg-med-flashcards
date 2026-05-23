@@ -611,8 +611,90 @@ const anatomyExpansionCards = [
   source: "pg-med-sources/anatomy",
 }));
 
+const physiologyExpansionCards = [
+  ["physiology", "Resting membrane potential", "What mainly determines resting membrane potential in large nerve fibers?", "High resting potassium permeability dominates RMP. The Na-K ATPase maintains gradients and adds a small electrogenic negative contribution.", ["nerve", "membrane potential"], "AIIMS, NEET"],
+  ["physiology", "Nernst equation use", "What does the Nernst equation calculate?", "It calculates the equilibrium potential for a single ion across a membrane from its concentration gradient.", ["nerve", "electrophysiology"], "NEET"],
+  ["physiology", "Goldman equation", "Why is the Goldman equation more physiologic than Nernst for RMP?", "It accounts for multiple permeant ions and their relative membrane permeabilities, especially potassium, sodium, and chloride.", ["nerve", "electrophysiology"], "AIIMS"],
+  ["physiology", "Action potential phases", "Which ion movements cause depolarization and repolarization in a nerve action potential?", "Depolarization is mainly rapid sodium influx through voltage-gated sodium channels. Repolarization is sodium channel inactivation plus potassium efflux.", ["nerve", "action potential"], "NEET", ["Resting", "Depolarization", "Repolarization", "After-hyperpolarization"]],
+  ["physiology", "Absolute refractory period", "What causes the absolute refractory period?", "Voltage-gated sodium channels are inactivated, so another action potential cannot be generated regardless of stimulus strength.", ["nerve", "action potential"], "AIIMS"],
+  ["physiology", "Saltatory conduction", "Why is conduction faster in myelinated fibers?", "Action potentials jump between nodes of Ranvier, reducing membrane capacitance and increasing conduction speed.", ["nerve", "conduction"], "NEET"],
+  ["physiology", "Nerve fiber classification", "Which fibers conduct fastest and slowest?", "Large myelinated A-alpha fibers conduct fastest; small unmyelinated C fibers conduct slowest.", ["nerve", "conduction"], "NEET"],
+  ["physiology", "NMJ transmission", "What is the sequence at the neuromuscular junction?", "Nerve impulse opens presynaptic calcium channels, acetylcholine is released, nicotinic receptors open, end-plate potential forms, and muscle action potential follows.", ["nerve-muscle", "NMJ"], "AIIMS, NEET"],
+  ["physiology", "Myasthenia gravis physiology", "What is the physiological defect in myasthenia gravis?", "Reduced functional nicotinic acetylcholine receptors at the neuromuscular junction reduce safety factor and cause fatigable weakness.", ["nerve-muscle", "NMJ"], "AIIMS"],
+  ["physiology", "Excitation-contraction coupling", "How does skeletal muscle excitation cause contraction?", "T-tubule depolarization activates dihydropyridine receptors, which open ryanodine receptors on sarcoplasmic reticulum, releasing calcium for actin-myosin interaction.", ["muscle", "contraction"], "NEET"],
+  ["physiology", "Power stroke", "What triggers the actin-myosin power stroke?", "Inorganic phosphate release after myosin binds actin triggers the power stroke; ATP binding later detaches myosin.", ["muscle", "contraction"], "AIIMS"],
+  ["physiology", "Rigor mortis", "Why does rigor mortis occur?", "ATP depletion prevents detachment of myosin from actin, causing sustained stiffness until proteins degrade.", ["muscle", "applied"], "NEET"],
+  ["physiology", "Isometric vs isotonic", "Differentiate isometric and isotonic contraction.", "Isometric contraction develops tension without shortening. Isotonic contraction shortens against a load with relatively constant tension.", ["muscle", "mechanics"], "NEET"],
+  ["physiology", "Smooth muscle latch state", "Why can smooth muscle maintain tone economically?", "The latch state allows attached cross-bridges to maintain force with low ATP use.", ["muscle", "smooth muscle"], "AIIMS"],
+  ["physiology", "Plasma proteins", "Name key functions of plasma proteins.", "They maintain oncotic pressure, transport substances, buffer pH, contribute to coagulation and immunity, and affect viscosity.", ["blood", "plasma"], "NEET"],
+  ["physiology", "RBC indices", "How are MCV, MCH, and MCHC useful?", "MCV classifies RBC size, MCH estimates hemoglobin per cell, and MCHC estimates hemoglobin concentration in packed RBCs.", ["blood", "RBC"], "NEET"],
+  ["physiology", "Erythropoietin trigger", "What stimulates erythropoietin secretion?", "Tissue hypoxia stimulates renal peritubular interstitial cells to increase erythropoietin production.", ["blood", "erythropoiesis"], "AIIMS"],
+  ["physiology", "Hemostasis sequence", "What is the sequence of normal hemostasis?", "Vasoconstriction, platelet plug formation, coagulation with fibrin stabilization, clot retraction, and fibrinolysis.", ["blood", "coagulation"], "NEET", ["Vasoconstriction", "Platelet plug", "Fibrin clot", "Fibrinolysis"]],
+  ["physiology", "Intrinsic pathway test", "Which coagulation test reflects the intrinsic pathway?", "Activated partial thromboplastin time reflects intrinsic and common pathways; PT reflects extrinsic and common pathways.", ["blood", "coagulation"], "NEET"],
+  ["physiology", "ABO transfusion logic", "Why is O negative called a universal RBC donor?", "O negative RBCs lack A, B, and Rh D antigens, reducing risk of recipient antibody-mediated hemolysis for emergency RBC transfusion.", ["blood", "transfusion"], "AIIMS"],
+  ["physiology", "Cardiac muscle plateau", "What causes the plateau phase of cardiac ventricular action potential?", "Slow calcium influx through L-type calcium channels balances potassium efflux, prolonging depolarization.", ["cardiovascular", "action potential"], "NEET"],
+  ["physiology", "SA node pacemaker", "What ionic current drives SA nodal pacemaker potential?", "Funny current plus calcium currents drive phase 4 depolarization; autonomic tone changes the slope.", ["cardiovascular", "pacemaker"], "AIIMS"],
+  ["physiology", "ECG intervals", "What does PR interval represent?", "PR interval reflects atrial depolarization and conduction through AV node and His-Purkinje system before ventricular depolarization.", ["cardiovascular", "ECG"], "NEET"],
+  ["physiology", "Cardiac cycle valves", "When are all cardiac valves closed?", "During isovolumetric contraction and isovolumetric relaxation.", ["cardiovascular", "cardiac cycle"], "NEET"],
+  ["physiology", "Frank-Starling law", "State the Frank-Starling law.", "Within physiological limits, increased venous return increases end-diastolic fiber length and increases stroke volume.", ["cardiovascular", "cardiac output"], "AIIMS"],
+  ["physiology", "Cardiac output equation", "What is the basic equation for cardiac output?", "Cardiac output equals heart rate multiplied by stroke volume.", ["cardiovascular", "cardiac output"], "NEET"],
+  ["physiology", "Venous return", "What factors increase venous return?", "Skeletal muscle pump, respiratory pump, venoconstriction, increased blood volume, and reduced right atrial pressure within limits.", ["cardiovascular", "circulation"], "NEET"],
+  ["physiology", "Mean arterial pressure", "How is mean arterial pressure approximated?", "MAP is approximately diastolic pressure plus one-third pulse pressure at normal heart rates.", ["cardiovascular", "blood pressure"], "NEET"],
+  ["physiology", "Baroreceptor reflex", "How does baroreceptor reflex respond to increased arterial pressure?", "Carotid sinus and aortic arch firing increases, inhibiting sympathetic output and increasing vagal output to lower heart rate and vascular tone.", ["cardiovascular", "reflex"], "AIIMS"],
+  ["physiology", "Capillary Starling forces", "Which forces determine capillary fluid movement?", "Capillary and interstitial hydrostatic pressures plus plasma and interstitial oncotic pressures determine filtration or absorption.", ["cardiovascular", "microcirculation"], "NEET"],
+  ["physiology", "Shock compensation", "What are early compensations in hypovolemic shock?", "Baroreceptor-mediated sympathetic activation causes tachycardia, vasoconstriction, venoconstriction, and later RAAS/ADH-mediated fluid conservation.", ["cardiovascular", "shock"], "AIIMS, NEET"],
+  ["physiology", "Lung compliance", "What decreases lung compliance?", "Pulmonary fibrosis, edema, atelectasis, and surfactant deficiency reduce compliance.", ["respiratory", "mechanics"], "NEET"],
+  ["physiology", "Surfactant function", "What is the main function of pulmonary surfactant?", "It lowers alveolar surface tension, increases compliance, stabilizes alveoli of different sizes, and reduces work of breathing.", ["respiratory", "surfactant"], "NEET"],
+  ["physiology", "Spirometry obstruction", "What spirometry pattern suggests obstructive disease?", "FEV1 falls disproportionately, so FEV1/FVC decreases.", ["respiratory", "spirometry"], "AIIMS, NEET"],
+  ["physiology", "Dead space", "Differentiate anatomical and physiological dead space.", "Anatomical dead space is conducting airway volume. Physiological dead space includes anatomical dead space plus alveoli that are ventilated but underperfused.", ["respiratory", "ventilation"], "NEET"],
+  ["physiology", "V/Q mismatch", "What is the V/Q pattern in pulmonary embolism?", "Ventilation is preserved but perfusion falls, creating high V/Q and increased dead space.", ["respiratory", "VQ"], "AIIMS"],
+  ["physiology", "Oxygen transport", "How is most oxygen transported in blood?", "Most oxygen is carried bound to hemoglobin; only a small fraction is dissolved in plasma.", ["respiratory", "gas transport"], "NEET"],
+  ["physiology", "CO2 transport", "How is most carbon dioxide transported?", "Most CO2 is transported as bicarbonate after conversion by carbonic anhydrase in RBCs.", ["respiratory", "gas transport"], "NEET"],
+  ["physiology", "Haldane effect", "What is the Haldane effect?", "Deoxygenated hemoglobin carries more CO2 and H+, facilitating CO2 loading in tissues and unloading in lungs.", ["respiratory", "gas transport"], "AIIMS"],
+  ["physiology", "Central chemoreceptors", "What do central chemoreceptors mainly sense?", "They respond to CSF hydrogen ion concentration generated from arterial CO2 crossing the blood-brain barrier.", ["respiratory", "control"], "NEET"],
+  ["physiology", "GFR determinants", "What determines glomerular filtration rate?", "Net filtration pressure, filtration coefficient, renal plasma flow, and afferent/efferent arteriolar tone determine GFR.", ["renal", "GFR"], "NEET"],
+  ["physiology", "Autoregulation of GFR", "Name the mechanisms of renal autoregulation.", "Myogenic response and tubuloglomerular feedback help stabilize renal blood flow and GFR.", ["renal", "GFR"], "AIIMS"],
+  ["physiology", "Clearance formula", "What is the renal clearance formula?", "Clearance equals urine concentration times urine flow rate divided by plasma concentration: C = UxV/Px.", ["renal", "clearance"], "NEET"],
+  ["physiology", "PAH clearance", "Why does PAH clearance estimate renal plasma flow?", "At low plasma concentrations PAH is filtered and strongly secreted, so nearly all PAH entering renal plasma is excreted.", ["renal", "clearance"], "AIIMS"],
+  ["physiology", "Countercurrent multiplier", "What creates the medullary osmotic gradient?", "NaCl reabsorption in thick ascending limb plus water permeability of descending limb creates the countercurrent multiplier; urea recycling reinforces inner medulla.", ["renal", "concentration"], "NEET"],
+  ["physiology", "ADH action", "Where does ADH act and what does it do?", "ADH acts mainly on V2 receptors in collecting ducts to insert aquaporin-2 channels and increase water reabsorption.", ["renal", "hormones"], "NEET"],
+  ["physiology", "Aldosterone action", "What are the main renal effects of aldosterone?", "It increases sodium reabsorption and potassium/hydrogen secretion in late distal tubule and collecting duct principal/intercalated cells.", ["renal", "hormones"], "AIIMS"],
+  ["physiology", "Micturition reflex", "Which spinal segments mediate parasympathetic micturition reflex?", "S2-S4 parasympathetic outflow contracts detrusor and relaxes internal sphincter during micturition.", ["renal", "bladder"], "NEET"],
+  ["physiology", "Salivary secretion", "Which autonomic input produces watery salivary secretion?", "Parasympathetic stimulation produces copious watery saliva; sympathetic stimulation produces smaller protein-rich secretion.", ["GIT", "secretions"], "NEET"],
+  ["physiology", "Gastric acid secretion", "What stimulates parietal cell acid secretion?", "Acetylcholine, gastrin, and histamine stimulate acid secretion; somatostatin and prostaglandins inhibit it.", ["GIT", "stomach"], "AIIMS"],
+  ["physiology", "Pancreatic bicarbonate", "Which hormone stimulates pancreatic bicarbonate secretion?", "Secretin stimulates bicarbonate-rich pancreatic duct secretion, especially in response to duodenal acid.", ["GIT", "pancreas"], "NEET"],
+  ["physiology", "Bile salt role", "Why are bile salts important?", "They emulsify fats and form micelles to aid absorption of lipids and fat-soluble vitamins.", ["GIT", "absorption"], "NEET"],
+  ["physiology", "Peristalsis law", "What is the law of intestine?", "Distension causes contraction above and relaxation below the bolus, propelling contents aborally.", ["GIT", "motility"], "AIIMS"],
+  ["physiology", "Insulin actions", "Name key metabolic actions of insulin.", "Insulin increases glucose uptake in muscle/adipose, glycogenesis, lipogenesis and protein synthesis, while decreasing gluconeogenesis and lipolysis.", ["endocrine", "pancreas"], "NEET"],
+  ["physiology", "Glucagon actions", "What are key actions of glucagon?", "Glucagon increases hepatic glycogenolysis, gluconeogenesis, ketogenesis, and lipolysis, especially during fasting.", ["endocrine", "pancreas"], "NEET"],
+  ["physiology", "Thyroid hormone effects", "What are major physiological effects of thyroid hormones?", "They increase basal metabolic rate, heat production, growth and CNS development, and beta-adrenergic responsiveness.", ["endocrine", "thyroid"], "AIIMS, NEET"],
+  ["physiology", "Cortisol actions", "Name major actions of cortisol.", "Cortisol increases gluconeogenesis, protein catabolism, lipolysis, vascular responsiveness to catecholamines, and anti-inflammatory effects.", ["endocrine", "adrenal"], "NEET"],
+  ["physiology", "PTH actions", "What does parathyroid hormone do?", "PTH increases serum calcium by bone resorption, renal calcium reabsorption, phosphate excretion, and activation of vitamin D.", ["endocrine", "calcium"], "AIIMS"],
+  ["physiology", "Menstrual cycle hormones", "What triggers ovulation?", "Sustained high estradiol produces positive feedback causing the LH surge, which triggers ovulation.", ["endocrine", "reproduction"], "NEET"],
+  ["physiology", "Stretch reflex", "What receptor mediates the stretch reflex?", "Muscle spindle detects stretch and activates Ia afferents causing monosynaptic contraction of the same muscle.", ["CNS", "reflex"], "NEET"],
+  ["physiology", "Golgi tendon organ", "What does the Golgi tendon organ detect?", "It detects muscle tension via Ib afferents and contributes to inverse stretch reflex.", ["CNS", "reflex"], "AIIMS"],
+  ["physiology", "Pain pathway", "Which tract carries pain and temperature?", "The lateral spinothalamic tract carries pain and temperature after crossing within a few spinal segments.", ["CNS", "sensory"], "NEET"],
+  ["physiology", "Dorsal column pathway", "What modalities are carried in dorsal columns?", "Fine touch, vibration, conscious proprioception, and two-point discrimination ascend ipsilaterally before decussating in medulla.", ["CNS", "sensory"], "AIIMS"],
+  ["physiology", "Basal ganglia role", "What is the main motor role of basal ganglia?", "Basal ganglia help initiate desired movements and suppress unwanted movements through direct and indirect pathways.", ["CNS", "motor"], "NEET"],
+  ["physiology", "Cerebellar lesion", "What are classic signs of cerebellar dysfunction?", "Ataxia, intention tremor, dysmetria, dysdiadochokinesia, nystagmus, hypotonia, and scanning speech.", ["CNS", "cerebellum"], "AIIMS, NEET"],
+  ["physiology", "Phototransduction", "What happens to photoreceptors in light?", "Light hyperpolarizes photoreceptors by reducing cGMP and closing sodium channels.", ["special senses", "vision"], "AIIMS"],
+  ["physiology", "Organ of Corti", "What converts sound vibration into nerve signals?", "Hair cells in the organ of Corti transduce basilar membrane movement into neural signals through stereocilia deflection.", ["special senses", "hearing"], "NEET"],
+  ["physiology", "Temperature regulation", "Where is the main thermoregulatory center?", "The hypothalamus integrates thermal signals; anterior hypothalamus promotes heat loss and posterior hypothalamus supports heat conservation.", ["temperature", "hypothalamus"], "NEET"],
+  ["physiology", "Exercise physiology", "What happens to arteriovenous oxygen difference during exercise?", "It increases because active muscles extract more oxygen from delivered blood.", ["exercise", "cardiorespiratory"], "AIIMS"],
+].map((item, index) => ({
+  id: `phys-extra-${index + 1}`,
+  subject: item[0],
+  title: item[1],
+  prompt: item[2],
+  answer: item[3],
+  tags: item[4],
+  exam: item[5],
+  diagram: item[6] || null,
+  source: "pg-med-sources/physiology",
+}));
+
 const customCards = JSON.parse(localStorage.getItem("customCards") || "[]");
-let cards = [...baseCards, ...anatomyExpansionCards, ...customCards];
+let cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...customCards];
 
 const state = {
   subject: "all",
@@ -862,7 +944,7 @@ function addAiCard(flashcard) {
     custom: true,
   };
   customCards.push(card);
-  cards = [...baseCards, ...anatomyExpansionCards, ...customCards];
+  cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...customCards];
   saveCustomCards();
   state.subject = subject;
   state.filter = "all";
