@@ -536,8 +536,83 @@ const baseCards = [
   diagram: item[6] || null,
 }));
 
+const anatomyExpansionCards = [
+  ["anatomy", "Nutrient foramen rule", "What is the direction rule for nutrient foramina in long bones?", "The nutrient canal is directed away from the growing end. Around the elbow it is directed toward the joint, and around the knee it is directed away from the joint.", ["general anatomy", "bones"], "AIIMS, NEET"],
+  ["anatomy", "Sesamoid bones", "Why are sesamoid bones clinically important?", "They develop in tendons near joints, reduce friction, alter the line of pull, and may be mistaken for fracture fragments on imaging.", ["general anatomy", "bones"], "NEET"],
+  ["anatomy", "Types of cartilage", "Compare hyaline, elastic, and fibrocartilage by high-yield locations.", "Hyaline cartilage: articular surfaces, costal cartilages, trachea. Elastic cartilage: pinna, epiglottis. Fibrocartilage: intervertebral disc, pubic symphysis, menisci.", ["general anatomy", "cartilage"], "AIIMS, NEET"],
+  ["anatomy", "Endochondral ossification", "What is the sequence of endochondral ossification?", "Cartilage model forms first, then primary ossification center, vascular invasion, marrow cavity, secondary centers, and persistence of articular cartilage and epiphyseal plate until maturity.", ["general anatomy", "embryology"], "NEET", ["Cartilage model", "Primary center", "Vascular invasion", "Secondary centers"]],
+  ["anatomy", "Synovial joint features", "What are essential features of a synovial joint?", "Articular cartilage, joint cavity, synovial membrane, fibrous capsule, synovial fluid, and accessory ligaments or discs when present.", ["general anatomy", "joints"], "NEET"],
+  ["anatomy", "Hilton law", "State Hilton law for joints.", "A nerve supplying a muscle that moves a joint also supplies the joint and the skin over the muscle insertion region.", ["general anatomy", "joints", "nerves"], "AIIMS"],
+  ["anatomy", "Lymph node drainage logic", "What is the exam logic for superficial and deep lymph drainage?", "Superficial lymphatics usually accompany superficial veins, while deep lymphatics follow deep vessels and drain through regional deep nodes.", ["general anatomy", "lymphatics"], "NEET"],
+  ["anatomy", "Deep fascia importance", "Why does deep fascia matter clinically?", "Deep fascia forms compartments, retinacula and intermuscular septa; tight fascial compartments explain compartment syndrome and spread of infection along planes.", ["general anatomy", "fascia"], "AIIMS, NEET"],
+  ["anatomy", "Clavicle unique features", "List high-yield unique features of the clavicle.", "It is subcutaneous, horizontally placed, ossifies early, largely ossifies in membrane, has no typical medullary cavity, and transmits upper-limb weight to the axial skeleton.", ["upper limb", "bones"], "NEET"],
+  ["anatomy", "Clavicle fracture displacement", "Why does the lateral fragment of a mid-clavicle fracture droop?", "The upper limb weight pulls the lateral fragment downward, while sternocleidomastoid tends to elevate the medial fragment.", ["upper limb", "fractures"], "AIIMS"],
+  ["anatomy", "Scapular anastomosis", "Which arteries form the scapular anastomosis?", "Suprascapular and dorsal scapular arteries connect with circumflex scapular branches around the scapula, preserving collateral flow after proximal axillary artery obstruction.", ["upper limb", "arteries"], "NEET"],
+  ["anatomy", "Axillary artery parts", "How are the three parts of the axillary artery defined?", "They are defined by pectoralis minor: first part medial, second part posterior, third part lateral to the muscle.", ["upper limb", "arteries"], "AIIMS, NEET"],
+  ["anatomy", "Axillary nerve lesion", "What deficits follow axillary nerve injury?", "Deltoid and teres minor weakness, impaired shoulder abduction after the first 15 degrees, and sensory loss over the regimental badge area.", ["upper limb", "nerves"], "NEET"],
+  ["anatomy", "Long thoracic nerve", "Which lesion causes winging of scapula?", "Long thoracic nerve injury paralyzes serratus anterior, causing medial scapular winging and difficulty pushing or abducting above shoulder level.", ["upper limb", "nerves"], "AIIMS"],
+  ["anatomy", "Radial nerve in spiral groove", "What is the classic radial nerve lesion at the spiral groove?", "Wrist and finger extension are weak, but triceps may be partly spared because branches to triceps often arise proximally.", ["upper limb", "nerves"], "NEET"],
+  ["anatomy", "Median nerve at wrist", "What motor deficit is typical in carpal tunnel syndrome?", "Thenar weakness with impaired opposition and abduction of thumb; palmar cutaneous sensation is usually spared because that branch passes superficial to the tunnel.", ["upper limb", "nerves"], "AIIMS, NEET"],
+  ["anatomy", "Ulnar nerve at wrist", "What is ulnar claw and why does it occur?", "Ulnar claw affects ring and little fingers due to paralysis of interossei and medial lumbricals, leaving extensor and long flexor imbalance at MCP and IP joints.", ["upper limb", "nerves"], "NEET"],
+  ["anatomy", "Cubital fossa contents", "List cubital fossa contents from medial to lateral.", "Median nerve, brachial artery, biceps tendon, and radial nerve region are remembered as MBBR from medial to lateral.", ["upper limb", "relations"], "AIIMS"],
+  ["anatomy", "Anatomical snuffbox", "What are the boundaries and key floor structure of anatomical snuffbox?", "Boundaries are APL/EPB laterally and EPL medially; scaphoid and trapezium form the floor, with radial artery crossing the floor.", ["upper limb", "hand"], "NEET"],
+  ["anatomy", "Rotator cuff", "Name rotator cuff muscles and their main action pattern.", "Supraspinatus initiates abduction; infraspinatus and teres minor laterally rotate; subscapularis medially rotates. Together they stabilize the humeral head.", ["upper limb", "muscles"], "NEET"],
+  ["anatomy", "Breast lymphatics", "Where does most breast lymph drain?", "Most lymph drains to axillary nodes, especially anterior or pectoral nodes; medial quadrants can drain to internal mammary nodes.", ["thorax", "lymphatics"], "AIIMS, NEET"],
+  ["anatomy", "Intercostal neurovascular bundle", "What is the order of structures in the costal groove?", "From superior to inferior in the costal groove: vein, artery, nerve. Procedures are usually done near the upper border of the rib below.", ["thorax", "relations"], "NEET"],
+  ["anatomy", "Azygos vein arch", "Where does the azygos vein arch terminate?", "It arches over the root of the right lung and drains into the superior vena cava.", ["thorax", "veins"], "AIIMS"],
+  ["anatomy", "Right vs left main bronchus", "Why is foreign body aspiration more common on the right?", "The right main bronchus is wider, shorter, and more vertical than the left.", ["thorax", "respiratory"], "NEET"],
+  ["anatomy", "Lung segment principle", "Why are bronchopulmonary segments surgically important?", "Each segment has its own segmental bronchus and arterial supply with veins running intersegmentally, allowing segmental resection.", ["thorax", "respiratory"], "AIIMS"],
+  ["anatomy", "Phrenic nerve", "What does the phrenic nerve supply?", "C3-C5 motor supply to diaphragm and sensory supply to central diaphragmatic pleura, pericardium, and central diaphragmatic peritoneum.", ["thorax", "nerves"], "NEET"],
+  ["anatomy", "Femoral triangle", "List femoral triangle contents lateral to medial.", "Nerve, artery, vein, empty canal, lymphatics: NAVEL from lateral to medial.", ["lower limb", "relations"], "AIIMS, NEET"],
+  ["anatomy", "Femoral sheath", "Which femoral triangle content is outside the femoral sheath?", "Femoral nerve lies outside the femoral sheath; the sheath contains femoral artery, vein, and canal.", ["lower limb", "fascia"], "NEET"],
+  ["anatomy", "Adductor canal", "What are the contents of the adductor canal?", "Femoral artery, femoral vein, saphenous nerve, nerve to vastus medialis, and lymphatics pass through the canal.", ["lower limb", "relations"], "AIIMS"],
+  ["anatomy", "Sciatic nerve injury", "What is the safest quadrant for gluteal intramuscular injection?", "Superolateral quadrant of the buttock, away from the sciatic nerve and major inferior gluteal neurovascular structures.", ["lower limb", "nerves"], "NEET"],
+  ["anatomy", "Common peroneal nerve", "What is the classic deficit after common peroneal nerve injury at fibular neck?", "Foot drop with loss of dorsiflexion and eversion, plus sensory loss over lateral leg and dorsum of foot.", ["lower limb", "nerves"], "AIIMS, NEET"],
+  ["anatomy", "Tarsal tunnel contents", "List structures behind the medial malleolus.", "Tom, Dick And Very Nervous Harry: tibialis posterior, flexor digitorum longus, posterior tibial artery, tibial nerve, flexor hallucis longus.", ["lower limb", "ankle"], "NEET"],
+  ["anatomy", "Hip joint blood supply", "Which vessels are critical for femoral head blood supply in adults?", "Retinacular branches of the medial circumflex femoral artery are most important; fracture neck femur can endanger them.", ["lower limb", "arteries"], "AIIMS"],
+  ["anatomy", "Trendelenburg sign", "What does a positive Trendelenburg sign indicate?", "Weak hip abductors, commonly gluteus medius and minimus due to superior gluteal nerve lesion or hip pathology.", ["lower limb", "gait"], "NEET"],
+  ["anatomy", "Knee locking", "What causes locking and unlocking of the knee?", "Terminal extension locks the knee through medial rotation of femur on tibia in weight-bearing; popliteus initiates unlocking.", ["lower limb", "joints"], "AIIMS"],
+  ["anatomy", "Inguinal canal walls", "Summarize the walls of the inguinal canal.", "Anterior wall: external oblique aponeurosis. Posterior wall: transversalis fascia. Roof: arching internal oblique/transversus. Floor: inguinal ligament.", ["abdomen", "inguinal canal"], "NEET"],
+  ["anatomy", "Direct vs indirect hernia", "How do direct and indirect inguinal hernias relate to inferior epigastric vessels?", "Indirect hernia passes lateral to inferior epigastric vessels through deep ring; direct hernia protrudes medial to them through Hesselbach triangle.", ["abdomen", "hernia"], "AIIMS, NEET"],
+  ["anatomy", "Portal-systemic anastomoses", "Name major portal-systemic anastomosis sites.", "Lower esophagus, upper anal canal, paraumbilical region, retroperitoneal gut areas, and bare area of liver.", ["abdomen", "veins"], "NEET"],
+  ["anatomy", "Lesser sac entry", "How is the lesser sac entered surgically?", "Through the epiploic foramen, bounded anteriorly by the free edge of lesser omentum containing portal triad.", ["abdomen", "peritoneum"], "AIIMS"],
+  ["anatomy", "Portal triad arrangement", "What is the arrangement of structures in the free edge of lesser omentum?", "Common bile duct lies right anterior, hepatic artery left anterior, and portal vein posterior.", ["abdomen", "relations"], "NEET"],
+  ["anatomy", "Appendix base landmark", "Where is the base of appendix located?", "At the convergence of the three taeniae coli on the cecum; surface marking is classically McBurney point.", ["abdomen", "gut"], "AIIMS"],
+  ["anatomy", "Ureter constrictions", "Name the three classic constrictions of the ureter.", "Pelviureteric junction, crossing of pelvic brim or iliac vessels, and ureterovesical junction.", ["abdomen", "pelvis"], "NEET"],
+  ["anatomy", "Kidney coverings", "List kidney coverings from inside outward.", "Fibrous capsule, perirenal fat, renal fascia, and pararenal fat.", ["abdomen", "kidney"], "NEET"],
+  ["anatomy", "Pelvic splanchnic nerves", "What fibers do pelvic splanchnic nerves carry?", "Parasympathetic fibers from S2-S4 to pelvic organs and hindgut derivatives up to the left colic flexure region through plexuses.", ["pelvis", "nerves"], "AIIMS"],
+  ["anatomy", "Pudendal nerve course", "Trace the pudendal nerve around the pelvis.", "It exits greater sciatic foramen below piriformis, hooks around sacrospinous ligament near ischial spine, and enters perineum through lesser sciatic foramen.", ["pelvis", "nerves"], "AIIMS, NEET"],
+  ["anatomy", "Ischioanal fossa contents", "What is the key neurovascular content of the lateral wall of ischioanal fossa?", "Pudendal canal in obturator fascia contains pudendal nerve and internal pudendal vessels.", ["pelvis", "perineum"], "NEET"],
+  ["anatomy", "Uterine artery relation", "What is the classic relation of uterine artery to ureter?", "The uterine artery crosses superior to the ureter near the cervix: water under the bridge.", ["pelvis", "relations"], "AIIMS, NEET"],
+  ["anatomy", "Prostate zones", "Which prostate zone is important in carcinoma?", "Carcinoma commonly arises in the peripheral zone, while benign prostatic hyperplasia mainly involves the transitional or periurethral region.", ["pelvis", "prostate"], "NEET"],
+  ["anatomy", "Anterior triangle", "What are the main subdivisions of the anterior triangle of neck?", "Submental, submandibular, carotid, and muscular triangles.", ["head and neck", "neck"], "NEET"],
+  ["anatomy", "Posterior triangle", "Which nerves are clinically important in posterior triangle?", "Spinal accessory nerve crosses the triangle superficially and roots/trunks of brachial plexus emerge between scalene muscles.", ["head and neck", "nerves"], "AIIMS"],
+  ["anatomy", "Parotid gland contents", "List structures within parotid gland from superficial to deep.", "Facial nerve, retromandibular vein, and external carotid artery are arranged from superficial to deep.", ["head and neck", "salivary gland"], "NEET"],
+  ["anatomy", "Danger area of face", "Why is infection in the danger area of face important?", "Facial vein communications with ophthalmic veins can allow spread to cavernous sinus.", ["head and neck", "veins"], "AIIMS"],
+  ["anatomy", "Cavernous sinus syndrome", "Which ocular motor nerve is most vulnerable inside cavernous sinus?", "Abducens nerve runs close to the internal carotid artery within the sinus and is commonly affected early.", ["head and neck", "cranial nerves"], "NEET"],
+  ["anatomy", "Mandibular foramen relation", "Why is the mandibular foramen important for dental anesthesia?", "Inferior alveolar nerve enters the mandibular foramen before traversing the mandibular canal, making it a target for inferior alveolar nerve block.", ["head and neck", "mandible"], "AIIMS"],
+  ["anatomy", "Laryngeal nerve lesions", "How do recurrent and external laryngeal nerve injuries differ?", "Recurrent laryngeal nerve injury causes vocal cord palsy and hoarseness; external laryngeal nerve injury weakens cricothyroid and affects pitch.", ["head and neck", "nerves"], "NEET"],
+  ["anatomy", "Scalp layers", "List the five layers of scalp.", "Skin, connective tissue, aponeurosis, loose areolar tissue, and pericranium: SCALP.", ["head and neck", "scalp"], "AIIMS, NEET"],
+  ["anatomy", "Circle of Willis", "Which arteries form the circle of Willis?", "Anterior cerebral arteries with anterior communicating artery, internal carotid arteries, posterior communicating arteries, and posterior cerebral arteries.", ["neuroanatomy", "arteries"], "NEET"],
+  ["anatomy", "Internal capsule blood supply", "Why is lenticulostriate artery occlusion important?", "Lenticulostriate branches supply deep structures including parts of internal capsule; occlusion can cause dense contralateral motor deficits.", ["neuroanatomy", "blood supply"], "AIIMS"],
+  ["anatomy", "Brown-Sequard syndrome", "What deficits occur in Brown-Sequard syndrome?", "Ipsilateral upper motor neuron weakness and loss of proprioception below lesion with contralateral pain and temperature loss below lesion.", ["neuroanatomy", "tracts"], "AIIMS, NEET"],
+  ["anatomy", "Medial medullary syndrome", "Which structures are involved in medial medullary syndrome?", "Pyramid, medial lemniscus, and hypoglossal fibers, producing contralateral hemiparesis, contralateral loss of proprioception, and ipsilateral tongue weakness.", ["neuroanatomy", "brainstem"], "AIIMS"],
+  ["anatomy", "Lateral medullary syndrome", "Which artery is classically involved in lateral medullary syndrome?", "Posterior inferior cerebellar artery involvement affects nucleus ambiguus, spinal trigeminal tract, spinothalamic tract, vestibular nuclei, and inferior cerebellar peduncle.", ["neuroanatomy", "brainstem"], "NEET"],
+  ["anatomy", "CSF pathway", "Trace cerebrospinal fluid flow.", "Lateral ventricles to third ventricle through foramina of Monro, then aqueduct to fourth ventricle, then foramina of Luschka and Magendie to subarachnoid space.", ["neuroanatomy", "ventricles"], "NEET", ["Lateral ventricles", "Third ventricle", "Aqueduct", "Fourth ventricle"]],
+].map((item, index) => ({
+  id: `anat-extra-${index + 1}`,
+  subject: item[0],
+  title: item[1],
+  prompt: item[2],
+  answer: item[3],
+  tags: item[4],
+  exam: item[5],
+  diagram: item[6] || null,
+  source: "pg-med-sources/anatomy",
+}));
+
 const customCards = JSON.parse(localStorage.getItem("customCards") || "[]");
-let cards = [...baseCards, ...customCards];
+let cards = [...baseCards, ...anatomyExpansionCards, ...customCards];
 
 const state = {
   subject: "all",
@@ -787,7 +862,7 @@ function addAiCard(flashcard) {
     custom: true,
   };
   customCards.push(card);
-  cards = [...baseCards, ...customCards];
+  cards = [...baseCards, ...anatomyExpansionCards, ...customCards];
   saveCustomCards();
   state.subject = subject;
   state.filter = "all";
