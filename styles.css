@@ -278,6 +278,15 @@ button {
   padding-left: 22px;
 }
 
+.reference-books {
+  max-width: 520px;
+  margin-top: 10px;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
 .topic-index li {
   break-inside: avoid;
   margin: 0 0 7px;

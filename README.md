@@ -11,7 +11,32 @@ Static flashcard application for AIIMS PG / INI-CET and NEET PG revision.
 - Embedded flowchart-style diagrams for selected high-yield concepts
 - Ask AI tab that answers questions with the OpenAI Responses API
 - AI answers are automatically saved as custom flashcards under the best matching subject
+- Expanded high-yield topic checklist mapped to commonly used exam textbooks
 - No backend or build step required
+
+## Reference Spine
+
+The app includes original high-yield topic checklists aligned to these commonly used books. It does not reproduce textbook chapters or proprietary text.
+
+- Anatomy: BD Chaurasia
+- Physiology: GK Pal, Guyton
+- Biochemistry: Satyanarayan
+- Pathology: Robbins, Harsh Mohan
+- Pharmacology: KD Tripathi
+- Microbiology: Apurva Shastri
+- Community Medicine: Park's
+- Ophthalmology: Parsons
+- ENT: PL Dhingra
+- Forensic Medicine: Narayan Reddy
+- Medicine: Davidson, Harrison
+- Surgery: SRB
+- Obstetrics and Gynaecology: DC Dutta
+- Pediatrics: Ghai
+- Radiology: Rachana Chaurasia
+- Orthopedics: Maheswari
+- Anaesthesia: Ajay Yadav
+- Psychiatry: Niraj Ahuja
+- Dermatology: Saurav Jindal
 
 ## Local Use
 
