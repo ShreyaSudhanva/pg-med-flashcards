@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIIMS PG + NEET PG Flashcards</title>
+    <meta
+      name="description"
+      content="Indexed flashcards for AIIMS PG INI-CET and NEET PG preparation, grouped by MBBS subjects."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Subject index">
+        <div class="brand">
+          <span class="brand-mark">PG</span>
+          <div>
+            <h1>Med Flashcards</h1>
+            <p>AIIMS PG / INI-CET + NEET PG</p>
+          </div>
+        </div>
+
+        <label class="search-box">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Topic, tag, disease..." />
+        </label>
+
+        <div class="filter-row" aria-label="Deck filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="due">Due</button>
+          <button class="chip" data-filter="starred">Starred</button>
+        </div>
+
+        <nav id="subjectNav" class="subject-nav"></nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Official-syllabus aligned order</p>
+            <h2 id="subjectTitle">All subjects</h2>
+          </div>
+          <div class="stats">
+            <div>
+              <strong id="cardCount">0</strong>
+              <span>cards</span>
+            </div>
+            <div>
+              <strong id="studiedCount">0</strong>
+              <span>studied</span>
+            </div>
+            <div>
+              <strong id="dueCount">0</strong>
+              <span>due</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="syllabus-panel" aria-labelledby="syllabusHeading">
+          <div>
+            <h3 id="syllabusHeading">Subject Index</h3>
+            <p id="subjectSummary">
+              Cards are grouped by the MBBS curriculum areas used by NEET PG and AIIMS INI-CET.
+            </p>
+          </div>
+          <ol id="topicIndex" class="topic-index"></ol>
+        </section>
+
+        <section class="study-toolbar" aria-label="Study controls">
+          <button id="prevCard" class="icon-button" aria-label="Previous card">‹</button>
+          <button id="shuffleCards" class="secondary">Shuffle</button>
+          <button id="flipCard" class="primary">Flip card</button>
+          <button id="markStudied" class="secondary">Mark studied</button>
+          <button id="starCard" class="icon-button" aria-label="Star card">☆</button>
+          <button id="nextCard" class="icon-button" aria-label="Next card">›</button>
+        </section>
+
+        <section class="card-stage" aria-live="polite">
+          <article id="flashcard" class="flashcard" tabindex="0"></article>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h3>Deck Browser</h3>
+            <span id="browserMeta"></span>
+          </div>
+          <div id="cardGrid" class="card-grid"></div>
+        </section>
+
+        <footer class="footer">
+          <p>
+            Educational revision aid only. Verify clinical facts against current textbooks,
+            institutional protocols, and official exam notices.
+          </p>
+          <p>
+            Sources checked: NBEMS NEET-PG 2025 Information Bulletin, AIIMS INI-CET prospectus,
+            and the AIIMS MD/MS/MDS/MHA syllabus document.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
