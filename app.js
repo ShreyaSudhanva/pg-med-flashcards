@@ -134,7 +134,7 @@ const subjects = [
   },
 ];
 
-const cards = [
+const baseCards = [
   ["anatomy", "Erb palsy", "Which roots and posture define Erb-Duchenne palsy?", "C5-C6 upper trunk injury. Limb is adducted, medially rotated, elbow extended, forearm pronated: the classic waiter's tip posture.", ["upper limb", "neuroanatomy"], "AIIMS, NEET"],
   ["anatomy", "Carpal tunnel contents", "List the structures passing through the carpal tunnel.", "Median nerve plus nine tendons: four FDS, four FDP, and one FPL. Flexor carpi radialis is in a separate compartment.", ["upper limb"], "NEET"],
   ["anatomy", "Cavernous sinus", "Name the lateral wall and central structures of the cavernous sinus.", "Lateral wall: CN III, IV, V1, V2. Central: internal carotid artery with sympathetic plexus and CN VI.", ["head and neck"], "AIIMS"],
@@ -241,12 +241,17 @@ const cards = [
   diagram: item[6] || null,
 }));
 
+const customCards = JSON.parse(localStorage.getItem("customCards") || "[]");
+let cards = [...baseCards, ...customCards];
+
 const state = {
   subject: "all",
   filter: "all",
   query: "",
   index: 0,
   flipped: false,
+  view: "study",
+  previousResponseId: localStorage.getItem("aiPreviousResponseId") || null,
   studied: new Set(JSON.parse(localStorage.getItem("studiedCards") || "[]")),
   starred: new Set(JSON.parse(localStorage.getItem("starredCards") || "[]")),
 };
@@ -269,10 +274,33 @@ const els = {
   markStudied: document.getElementById("markStudied"),
   starCard: document.getElementById("starCard"),
   shuffleCards: document.getElementById("shuffleCards"),
+  viewTabs: document.querySelectorAll("[data-view]"),
+  studyView: document.getElementById("studyView"),
+  askView: document.getElementById("askView"),
+  apiKeyInput: document.getElementById("apiKeyInput"),
+  modelInput: document.getElementById("modelInput"),
+  aiSubjectSelect: document.getElementById("aiSubjectSelect"),
+  chatLog: document.getElementById("chatLog"),
+  askForm: document.getElementById("askForm"),
+  questionInput: document.getElementById("questionInput"),
+  askButton: document.getElementById("askButton"),
 };
 
 function subjectById(id) {
   return subjects.find((subject) => subject.id === id);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function normalizeSubject(id) {
+  return subjectById(id) ? id : "medicine";
 }
 
 function filteredCards() {
@@ -294,6 +322,10 @@ function saveProgress() {
   localStorage.setItem("starredCards", JSON.stringify([...state.starred]));
 }
 
+function saveCustomCards() {
+  localStorage.setItem("customCards", JSON.stringify(customCards));
+}
+
 function renderSubjectNav() {
   const allCount = cards.length;
   const buttons = [
@@ -304,7 +336,7 @@ function renderSubjectNav() {
       const count = cards.filter((card) => card.subject === subject.id).length;
       return `<button class="subject-button ${state.subject === subject.id ? "active" : ""}" data-subject="${subject.id}">
         <span class="subject-number">${index + 1}</span>
-        <span><strong>${subject.name}</strong><span>${subject.group}</span></span>
+        <span><strong>${escapeHtml(subject.name)}</strong><span>${escapeHtml(subject.group)}</span></span>
         <span>${count}</span>
       </button>`;
     }),
@@ -319,7 +351,7 @@ function renderHeader(deck) {
     ? activeSubject.summary
     : "Cards follow the standard MBBS subject order used for NEET PG and AIIMS INI-CET preparation.";
   const topics = activeSubject ? activeSubject.topics : subjects.map((subject) => `${subject.name} (${subject.group})`);
-  els.topicIndex.innerHTML = topics.map((topic) => `<li>${topic}</li>`).join("");
+  els.topicIndex.innerHTML = topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join("");
   els.cardCount.textContent = deck.length;
   els.studiedCount.textContent = deck.filter((card) => state.studied.has(card.id)).length;
   els.dueCount.textContent = deck.filter((card) => !state.studied.has(card.id)).length;
@@ -328,7 +360,7 @@ function renderHeader(deck) {
 
 function diagramMarkup(steps) {
   if (!steps) return "";
-  return `<div class="diagram" aria-label="Flowchart">${steps.map((step) => `<span>${step}</span>`).join("")}</div>`;
+  return `<div class="diagram" aria-label="Flowchart">${steps.map((step) => `<span>${escapeHtml(step)}</span>`).join("")}</div>`;
 }
 
 function renderCard(deck) {
@@ -346,16 +378,16 @@ function renderCard(deck) {
   els.starCard.textContent = starred ? "★" : "☆";
   els.flashcard.innerHTML = `
     <div class="card-meta">
-      <span class="tag exam">${card.exam}</span>
-      <span class="tag">${subject.name}</span>
-      ${card.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+      <span class="tag exam">${escapeHtml(card.exam)}</span>
+      <span class="tag">${escapeHtml(subject.name)}</span>
+      ${card.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("")}
       ${studied ? `<span class="tag">Studied</span>` : `<span class="tag">Due</span>`}
     </div>
-    <h3>${card.title}</h3>
+    <h3>${escapeHtml(card.title)}</h3>
     ${
       state.flipped
-        ? `<div class="answer"><p>${card.answer}</p>${diagramMarkup(card.diagram)}</div>`
-        : `<div class="answer"><p>${card.prompt}</p><p>Select Flip card or press Space.</p></div>`
+        ? `<div class="answer"><p>${escapeHtml(card.answer)}</p>${diagramMarkup(card.diagram)}</div>`
+        : `<div class="answer"><p>${escapeHtml(card.prompt)}</p><p>Select Flip card or press Space.</p></div>`
     }
   `;
 }
@@ -365,12 +397,29 @@ function renderGrid(deck) {
     .map((card, index) => {
       const subject = subjectById(card.subject);
       return `<button class="mini-card" data-card-index="${index}">
-        <strong>${card.title}</strong>
-        <span>${card.prompt}</span>
-        <span class="mini-row"><span>${subject.name}</span><span>${state.studied.has(card.id) ? "Studied" : "Due"}</span></span>
+        <strong>${escapeHtml(card.title)}</strong>
+        <span>${escapeHtml(card.prompt)}</span>
+        <span class="mini-row"><span>${escapeHtml(subject.name)}</span><span>${state.studied.has(card.id) ? "Studied" : "Due"}</span></span>
       </button>`;
     })
     .join("");
+}
+
+function renderSubjectSelect() {
+  els.aiSubjectSelect.innerHTML = [
+    `<option value="auto">Auto-detect subject</option>`,
+    ...subjects.map((subject) => `<option value="${subject.id}">${escapeHtml(subject.name)}</option>`),
+  ].join("");
+}
+
+function renderViews() {
+  els.viewTabs.forEach((tab) => {
+    const active = tab.dataset.view === state.view;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+  els.studyView.classList.toggle("active", state.view === "study");
+  els.askView.classList.toggle("active", state.view === "ask");
 }
 
 function render() {
@@ -379,6 +428,138 @@ function render() {
   renderHeader(deck);
   renderCard(deck);
   renderGrid(deck);
+  renderViews();
+}
+
+function addChatMessage(type, label, text) {
+  const message = document.createElement("div");
+  message.className = `chat-message ${type}`;
+  message.innerHTML = `<strong>${escapeHtml(label)}</strong><p>${escapeHtml(text)}</p>`;
+  els.chatLog.appendChild(message);
+  els.chatLog.scrollTop = els.chatLog.scrollHeight;
+}
+
+function extractResponseText(response) {
+  if (response.output_text) return response.output_text;
+  const message = response.output?.find((item) => item.type === "message");
+  const textPart = message?.content?.find((part) => part.type === "output_text");
+  return textPart?.text || "";
+}
+
+function parseAiPayload(text, question) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return {
+      answer: text,
+      flashcard: {
+        subject: els.aiSubjectSelect.value === "auto" ? "medicine" : els.aiSubjectSelect.value,
+        title: "AI-generated card",
+        prompt: question,
+        answer: text,
+        tags: ["ai-generated"],
+      },
+    };
+  }
+}
+
+function buildAiInstructions() {
+  const subjectList = subjects.map((subject) => `${subject.id}: ${subject.name}`).join("\n");
+  return `You are a careful medical exam tutor for AIIMS PG / INI-CET and NEET PG revision.
+Answer the user's question for exam preparation. Then create one flashcard from the question and answer.
+Choose the most appropriate subject id from this list unless the user selected an explicit subject:
+${subjectList}
+Return only JSON with this shape:
+{"answer":"concise answer","flashcard":{"subject":"subject_id","title":"short title","prompt":"question-style prompt","answer":"flashcard answer","tags":["tag1","tag2"]}}
+Keep the answer educational and advise clinical verification when the question is about patient care.`;
+}
+
+function addAiCard(flashcard) {
+  const subject = normalizeSubject(flashcard.subject);
+  const card = {
+    id: `custom-${Date.now()}`,
+    subject,
+    title: flashcard.title || "AI-generated card",
+    prompt: flashcard.prompt || els.questionInput.value.trim(),
+    answer: flashcard.answer || "Review the AI response in the Ask AI chat.",
+    tags: Array.isArray(flashcard.tags) && flashcard.tags.length ? flashcard.tags.slice(0, 5) : ["ai-generated"],
+    exam: "AIIMS, NEET",
+    diagram: null,
+    custom: true,
+  };
+  customCards.push(card);
+  cards = [...baseCards, ...customCards];
+  saveCustomCards();
+  state.subject = subject;
+  state.filter = "all";
+  state.query = "";
+  state.index = filteredCards().findIndex((item) => item.id === card.id);
+  state.flipped = false;
+  render();
+  return card;
+}
+
+async function askAi(question) {
+  const apiKey = els.apiKeyInput.value.trim();
+  const model = els.modelInput.value.trim() || "gpt-4.1-mini";
+  const selectedSubject = els.aiSubjectSelect.value;
+  if (!apiKey) throw new Error("Add an OpenAI API key first.");
+
+  localStorage.setItem("openaiApiKey", apiKey);
+  localStorage.setItem("openaiModel", model);
+
+  const explicitSubject = selectedSubject === "auto" ? "" : `\nThe user selected this subject: ${selectedSubject}. Use it for the flashcard subject.`;
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model,
+      instructions: buildAiInstructions() + explicitSubject,
+      previous_response_id: state.previousResponseId || undefined,
+      input: question,
+      text: {
+        format: {
+          type: "json_schema",
+          name: "medical_flashcard_answer",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              answer: { type: "string" },
+              flashcard: {
+                type: "object",
+                additionalProperties: false,
+                properties: {
+                  subject: { type: "string", enum: subjects.map((subject) => subject.id) },
+                  title: { type: "string" },
+                  prompt: { type: "string" },
+                  answer: { type: "string" },
+                  tags: { type: "array", items: { type: "string" }, maxItems: 5 },
+                },
+                required: ["subject", "title", "prompt", "answer", "tags"],
+              },
+            },
+            required: ["answer", "flashcard"],
+          },
+        },
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(details || `OpenAI request failed with HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+  state.previousResponseId = data.id || null;
+  if (state.previousResponseId) localStorage.setItem("aiPreviousResponseId", state.previousResponseId);
+  const text = extractResponseText(data);
+  return parseAiPayload(text, question);
 }
 
 function move(delta) {
@@ -458,8 +639,37 @@ els.cardGrid.addEventListener("click", (event) => {
   els.flashcard.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
+els.viewTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    state.view = tab.dataset.view;
+    render();
+  });
+});
+
+els.askForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const question = els.questionInput.value.trim();
+  if (!question) return;
+
+  addChatMessage("user", "You", question);
+  els.questionInput.value = "";
+  els.askButton.disabled = true;
+  els.askButton.textContent = "Asking...";
+
+  try {
+    const payload = await askAi(question);
+    const card = addAiCard(payload.flashcard || {});
+    addChatMessage("ai", "AI", `${payload.answer}\n\nAdded to ${subjectById(card.subject).name}: ${card.title}`);
+  } catch (error) {
+    addChatMessage("error", "Error", error.message);
+  } finally {
+    els.askButton.disabled = false;
+    els.askButton.textContent = "Ask and add flashcard";
+  }
+});
+
 document.addEventListener("keydown", (event) => {
-  if (event.target.matches("input")) return;
+  if (event.target.matches("input, textarea, select")) return;
   if (event.key === " ") {
     event.preventDefault();
     state.flipped = !state.flipped;
@@ -469,4 +679,8 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") move(-1);
 });
 
+renderSubjectSelect();
+els.apiKeyInput.value = localStorage.getItem("openaiApiKey") || "";
+els.modelInput.value = localStorage.getItem("openaiModel") || els.modelInput.value;
+addChatMessage("system", "Ask AI", "Ask a question and I will add the answer as a flashcard under the best matching subject.");
 render();

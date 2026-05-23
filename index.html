@@ -36,6 +36,12 @@
       </aside>
 
       <main class="main">
+        <div class="view-tabs" role="tablist" aria-label="Application views">
+          <button class="view-tab active" data-view="study" role="tab" aria-selected="true">Study Deck</button>
+          <button class="view-tab" data-view="ask" role="tab" aria-selected="false">Ask AI</button>
+        </div>
+
+        <div id="studyView" class="view-panel active">
         <header class="topbar">
           <div>
             <p class="eyebrow">Official-syllabus aligned order</p>
@@ -86,6 +92,48 @@
             <span id="browserMeta"></span>
           </div>
           <div id="cardGrid" class="card-grid"></div>
+        </section>
+        </div>
+
+        <section id="askView" class="view-panel ask-panel" aria-label="Ask AI">
+          <div class="ask-layout">
+            <div class="ask-config">
+              <div>
+                <p class="eyebrow">AI tutor</p>
+                <h2>Ask AI</h2>
+              </div>
+              <label>
+                OpenAI API key
+                <input id="apiKeyInput" type="password" placeholder="sk-..." autocomplete="off" />
+              </label>
+              <label>
+                Model
+                <input id="modelInput" type="text" value="gpt-4.1-mini" />
+              </label>
+              <label>
+                Save under
+                <select id="aiSubjectSelect">
+                  <option value="auto">Auto-detect subject</option>
+                </select>
+              </label>
+              <div class="ai-note">
+                Your key is stored only in this browser. This static site calls OpenAI directly, so do not use it on shared devices.
+              </div>
+            </div>
+
+            <div class="chat-panel">
+              <div id="chatLog" class="chat-log" aria-live="polite"></div>
+              <form id="askForm" class="ask-form">
+                <textarea
+                  id="questionInput"
+                  rows="4"
+                  placeholder="Ask a PG exam question, e.g. Explain nephritic vs nephrotic syndrome..."
+                  required
+                ></textarea>
+                <button id="askButton" class="primary" type="submit">Ask and add flashcard</button>
+              </form>
+            </div>
+          </div>
         </section>
 
         <footer class="footer">

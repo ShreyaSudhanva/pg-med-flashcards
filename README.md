@@ -9,11 +9,19 @@ Static flashcard application for AIIMS PG / INI-CET and NEET PG revision.
 - Due, studied, and starred card filters with local browser progress
 - Keyboard controls: Space to flip, Left/Right arrows to navigate
 - Embedded flowchart-style diagrams for selected high-yield concepts
+- Ask AI tab that answers questions with the OpenAI Responses API
+- AI answers are automatically saved as custom flashcards under the best matching subject
 - No backend or build step required
 
 ## Local Use
 
 Open `index.html` in a browser.
+
+## Ask AI Setup
+
+The Ask AI tab needs an OpenAI API key. The app is static, so the key is entered in the browser and stored only in that browser's `localStorage`. Do not use this on shared devices.
+
+Default model: `gpt-4.1-mini`. You can change the model in the Ask AI tab.
 
 ## GitHub Pages
 

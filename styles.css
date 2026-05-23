@@ -190,11 +190,40 @@ button {
 .topbar,
 .syllabus-panel,
 .study-toolbar,
-.section-heading {
+.section-heading,
+.view-tabs {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 18px;
+}
+
+.view-tabs {
+  justify-content: flex-start;
+  border-bottom: 1px solid var(--line);
+}
+
+.view-tab {
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  padding: 12px 4px;
+  font-weight: 800;
+}
+
+.view-tab.active {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.view-panel {
+  display: none;
+}
+
+.view-panel.active {
+  display: grid;
+  gap: 20px;
 }
 
 .topbar h2 {
@@ -410,6 +439,121 @@ button {
   line-height: 1.5;
 }
 
+.ask-panel h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1;
+}
+
+.ask-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.ask-config,
+.chat-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.ask-config {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.ask-config label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ask-config input,
+.ask-config select,
+.ask-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 12px;
+}
+
+.ai-note {
+  border-left: 3px solid var(--gold);
+  background: #fff8eb;
+  color: #6b531f;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.chat-panel {
+  display: grid;
+  min-height: 580px;
+}
+
+.chat-log {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  max-height: 560px;
+  overflow: auto;
+  padding: 18px;
+}
+
+.chat-message {
+  display: grid;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 14px;
+  line-height: 1.5;
+}
+
+.chat-message.user {
+  justify-self: end;
+  max-width: 85%;
+  background: #e9f3ef;
+}
+
+.chat-message.ai,
+.chat-message.system {
+  justify-self: start;
+  max-width: 92%;
+  background: #f3f5ef;
+}
+
+.chat-message.error {
+  background: #fff1f1;
+  color: var(--red);
+}
+
+.chat-message strong {
+  font-size: 13px;
+}
+
+.chat-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.ask-form {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding: 14px;
+}
+
+.ask-form textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
 @media (max-width: 900px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -430,6 +574,10 @@ button {
   .section-heading {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .ask-layout {
+    grid-template-columns: 1fr;
   }
 
   .stats {
