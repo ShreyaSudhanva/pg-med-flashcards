@@ -28,8 +28,9 @@ This project can be hosted directly from the repository root using GitHub Pages:
 
 The app is structured around the official exam framing:
 
-- NBEMS NEET-PG 2025 Information Bulletin: syllabus comprises subject/knowledge areas as per Graduate Medical Education Regulations issued by NMC / erstwhile MCI.
-- AIIMS INI-CET prospectus materials: PG entrance preparation is based on MBBS/BDS curriculum areas.
-- AIIMS MD/MS/MDS/MHA syllabus document for postgraduate academic context.
+- [NBEMS NEET-PG 2025 Information Bulletin](https://nbe.edu.in/IB/IB%20NEET-PG%202025.pdf): syllabus comprises subject/knowledge areas as per Graduate Medical Education Regulations issued by NMC / erstwhile MCI.
+- [NBEMS NEET-PG page](https://natboard.edu.in/viewnbeexam?exam=neetpg)
+- [AIIMS INI-CET prospectus materials](https://docs.aiimsexams.ac.in/sites/2_INI-CET%20PROSPECTUS%20PART%20B%20%20JAN%202025%20-AIIMS.pdf): PG entrance preparation is based on MBBS/BDS curriculum areas.
+- [AIIMS MD/MS/MDS/MHA syllabus document](https://aiims.edu/aiims/academic/aiims-syllabus/Syllabus%20-%20md%20ms%20mds%20mha.pdf) for postgraduate academic context.
 
 This is an educational revision aid. Confirm clinical decisions and exam updates against current official notices, textbooks, and institutional protocols.
