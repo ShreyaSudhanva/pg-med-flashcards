@@ -1618,8 +1618,68 @@ const orthopedicsExpansionCards = [
   source: "pg-med-sources/ortho",
 }));
 
+const psychiatryExpansionCards = [
+  ["psychiatry", "Mental status examination", "What domains are assessed in mental status examination?", "Appearance, behavior, speech, mood, affect, thought, perception, cognition, insight, and judgment are assessed.", ["MSE", "assessment"], "NEET"],
+  ["psychiatry", "Delusion", "Define delusion.", "A fixed false belief held with strong conviction despite evidence to the contrary and not explained by cultural context.", ["psychopathology", "thought"], "NEET"],
+  ["psychiatry", "Hallucination", "Define hallucination.", "A perception without an external stimulus, experienced as real.", ["psychopathology", "perception"], "NEET"],
+  ["psychiatry", "Illusion", "How is illusion different from hallucination?", "Illusion is misinterpretation of a real external stimulus; hallucination occurs without an external stimulus.", ["psychopathology", "perception"], "NEET"],
+  ["psychiatry", "Thought insertion", "What is thought insertion?", "The patient believes thoughts have been placed into their mind by an external agency.", ["psychopathology", "schizophrenia"], "AIIMS"],
+  ["psychiatry", "Thought broadcasting", "What is thought broadcasting?", "The patient believes their thoughts are being made known to others or broadcast externally.", ["psychopathology", "schizophrenia"], "AIIMS"],
+  ["psychiatry", "Neologism", "What is neologism?", "A newly coined word or phrase with idiosyncratic meaning, seen in formal thought disorder.", ["psychopathology", "thought"], "NEET"],
+  ["psychiatry", "Flight of ideas", "What is flight of ideas?", "Rapid shifting of ideas with understandable connections, commonly seen in mania.", ["psychopathology", "mania"], "NEET"],
+  ["psychiatry", "Schizophrenia symptoms", "Name positive symptoms of schizophrenia.", "Delusions, hallucinations, disorganized speech, disorganized behavior, and catatonic features are positive symptoms.", ["schizophrenia", "symptoms"], "NEET"],
+  ["psychiatry", "Negative symptoms", "Name negative symptoms of schizophrenia.", "Affective flattening, alogia, avolition, anhedonia, and social withdrawal are negative symptoms.", ["schizophrenia", "symptoms"], "NEET"],
+  ["psychiatry", "Catatonia", "Name clinical features of catatonia.", "Stupor, mutism, negativism, posturing, waxy flexibility, echolalia, echopraxia, agitation, and rigidity may occur.", ["schizophrenia", "catatonia"], "AIIMS"],
+  ["psychiatry", "Acute psychosis management", "What are priorities in acute psychosis?", "Ensure safety, assess medical or substance causes, reduce stimulation, use verbal de-escalation, and give antipsychotic or benzodiazepine when indicated.", ["psychosis", "emergency"], "NEET"],
+  ["psychiatry", "Antipsychotic EPS", "Name extrapyramidal adverse effects of antipsychotics.", "Acute dystonia, akathisia, drug-induced parkinsonism, and tardive dyskinesia.", ["psychopharmacology", "antipsychotics"], "NEET"],
+  ["psychiatry", "Neuroleptic malignant syndrome", "What suggests neuroleptic malignant syndrome?", "Fever, rigidity, altered sensorium, autonomic instability, raised CK, and recent dopamine antagonist exposure.", ["psychopharmacology", "emergency"], "AIIMS"],
+  ["psychiatry", "Clozapine adverse effect", "What serious monitoring issue is linked to clozapine?", "Agranulocytosis risk requires regular blood count monitoring; seizures, myocarditis, and metabolic effects are also important.", ["psychopharmacology", "clozapine"], "NEET"],
+  ["psychiatry", "Mania", "Name core symptoms of mania.", "Elevated or irritable mood with increased energy, decreased need for sleep, grandiosity, pressured speech, racing thoughts, distractibility, and risky behavior.", ["mood disorders", "mania"], "NEET"],
+  ["psychiatry", "Bipolar maintenance", "Name mood stabilizers used in bipolar disorder.", "Lithium, valproate, carbamazepine, lamotrigine, and some atypical antipsychotics are used depending on phase and patient factors.", ["mood disorders", "bipolar"], "NEET"],
+  ["psychiatry", "Lithium toxicity", "Name features of lithium toxicity.", "Tremor, vomiting, diarrhea, ataxia, confusion, seizures, renal impairment, and arrhythmias may occur.", ["psychopharmacology", "lithium"], "AIIMS"],
+  ["psychiatry", "Major depression", "Name core symptoms of major depressive episode.", "Persistent low mood or loss of interest with symptoms such as sleep, appetite, energy, guilt, concentration, psychomotor, and suicidal changes.", ["mood disorders", "depression"], "NEET"],
+  ["psychiatry", "Suicide risk", "Name important suicide risk factors.", "Past attempt, active plan, hopelessness, severe depression, psychosis, substance use, chronic illness, social isolation, and access to lethal means.", ["emergency", "suicide"], "NEET"],
+  ["psychiatry", "ECT indication", "Name indications for ECT.", "Severe depression with suicidality, psychotic depression, catatonia, treatment-resistant depression, severe mania, and need for rapid response.", ["treatment", "ECT"], "AIIMS"],
+  ["psychiatry", "Panic attack", "What is a panic attack?", "An abrupt surge of intense fear with autonomic and cognitive symptoms such as palpitations, dyspnea, chest discomfort, dizziness, and fear of dying.", ["anxiety", "panic"], "NEET"],
+  ["psychiatry", "Agoraphobia", "What is agoraphobia?", "Fear or avoidance of situations where escape may be difficult or help unavailable if panic-like symptoms occur.", ["anxiety", "phobia"], "NEET"],
+  ["psychiatry", "OCD", "Define obsession and compulsion.", "Obsessions are intrusive unwanted thoughts or urges; compulsions are repetitive acts or mental rituals performed to reduce anxiety.", ["anxiety", "OCD"], "NEET"],
+  ["psychiatry", "PTSD", "Name symptom clusters of PTSD.", "Intrusion, avoidance, negative mood or cognition, and hyperarousal after traumatic exposure.", ["stress disorders", "PTSD"], "AIIMS"],
+  ["psychiatry", "Somatic symptom disorder", "What characterizes somatic symptom disorder?", "Distressing somatic symptoms with excessive thoughts, feelings, or behaviors related to the symptoms.", ["somatoform", "diagnosis"], "NEET"],
+  ["psychiatry", "Dissociative disorder", "What is dissociation?", "Disruption in integration of consciousness, memory, identity, emotion, perception, body representation, motor control, or behavior.", ["dissociative", "definition"], "AIIMS"],
+  ["psychiatry", "Alcohol withdrawal", "Name alcohol withdrawal features.", "Tremor, sweating, anxiety, insomnia, nausea, tachycardia, hypertension, seizures, hallucinosis, and delirium tremens may occur.", ["substance use", "alcohol"], "NEET"],
+  ["psychiatry", "Delirium tremens", "What is delirium tremens?", "Severe alcohol withdrawal with delirium, autonomic instability, agitation, hallucinations, tremor, and high mortality risk if untreated.", ["substance use", "alcohol"], "AIIMS"],
+  ["psychiatry", "Alcohol dependence drugs", "Name drugs used in alcohol relapse prevention.", "Naltrexone, acamprosate, disulfiram, and baclofen in selected settings may be used with psychosocial treatment.", ["substance use", "alcohol"], "NEET"],
+  ["psychiatry", "Opioid withdrawal", "Name opioid withdrawal symptoms.", "Lacrimation, rhinorrhea, yawning, sweating, piloerection, diarrhea, cramps, myalgia, dilated pupils, anxiety, and insomnia.", ["substance use", "opioids"], "NEET"],
+  ["psychiatry", "Opioid overdose", "What is the antidote for opioid overdose?", "Naloxone reverses opioid-induced respiratory depression.", ["substance use", "emergency"], "NEET"],
+  ["psychiatry", "Cannabis intoxication", "Name features of cannabis intoxication.", "Euphoria, relaxation, impaired attention, altered perception, conjunctival injection, increased appetite, tachycardia, and anxiety or panic.", ["substance use", "cannabis"], "NEET"],
+  ["psychiatry", "ADHD", "What are the core symptom domains of ADHD?", "Inattention, hyperactivity, and impulsivity with impairment across settings.", ["child psychiatry", "ADHD"], "NEET"],
+  ["psychiatry", "Autism spectrum disorder", "Name core deficits in autism spectrum disorder.", "Persistent social communication deficits and restricted, repetitive patterns of behavior, interests, or activities.", ["child psychiatry", "autism"], "NEET"],
+  ["psychiatry", "Intellectual disability", "What defines intellectual disability?", "Deficits in intellectual functioning and adaptive functioning beginning during the developmental period.", ["child psychiatry", "ID"], "NEET"],
+  ["psychiatry", "Conduct disorder", "What characterizes conduct disorder?", "Persistent violation of rights of others or age-appropriate norms, including aggression, destruction, deceit, theft, or serious rule violations.", ["child psychiatry", "conduct"], "AIIMS"],
+  ["psychiatry", "Delirium", "What is the key clinical feature of delirium?", "Acute fluctuating disturbance in attention and awareness with cognitive change, usually due to medical illness, drugs, or withdrawal.", ["organic psychiatry", "delirium"], "NEET"],
+  ["psychiatry", "Dementia", "How does dementia differ from delirium?", "Dementia is usually chronic progressive cognitive decline with clear consciousness early; delirium is acute, fluctuating, and attention is impaired.", ["organic psychiatry", "dementia"], "NEET"],
+  ["psychiatry", "Alzheimer disease", "What is the typical early feature of Alzheimer disease?", "Progressive episodic memory impairment is typical early, followed by language, visuospatial, and executive decline.", ["organic psychiatry", "dementia"], "NEET"],
+  ["psychiatry", "Lewy body dementia", "Name features of Lewy body dementia.", "Fluctuating cognition, recurrent visual hallucinations, parkinsonism, REM sleep behavior disorder, and neuroleptic sensitivity.", ["organic psychiatry", "dementia"], "AIIMS"],
+  ["psychiatry", "Anorexia nervosa", "What characterizes anorexia nervosa?", "Restriction of intake causing significantly low weight, intense fear of weight gain, and body image disturbance.", ["eating disorders", "anorexia"], "NEET"],
+  ["psychiatry", "Bulimia nervosa", "What characterizes bulimia nervosa?", "Recurrent binge eating with compensatory behaviors such as vomiting, laxatives, fasting, or excessive exercise.", ["eating disorders", "bulimia"], "NEET"],
+  ["psychiatry", "Personality disorder clusters", "Name personality disorder clusters.", "Cluster A is odd-eccentric, cluster B is dramatic-emotional, and cluster C is anxious-fearful.", ["personality", "classification"], "NEET"],
+  ["psychiatry", "Borderline personality", "Name features of borderline personality disorder.", "Instability of relationships, self-image, affect, impulsivity, self-harm, fear of abandonment, emptiness, and anger.", ["personality", "cluster B"], "AIIMS"],
+  ["psychiatry", "Capacity", "What abilities are needed for decision-making capacity?", "Understand information, appreciate consequences, reason about options, and communicate a choice.", ["forensic psychiatry", "capacity"], "NEET"],
+  ["psychiatry", "Confidentiality exception", "When may confidentiality be breached?", "When required by law or when there is serious risk of harm to the patient or others, using minimum necessary disclosure.", ["ethics", "confidentiality"], "AIIMS"],
+].map((item, index) => ({
+  id: `psychiatry-extra-${index + 1}`,
+  subject: item[0],
+  title: item[1],
+  prompt: item[2],
+  answer: item[3],
+  tags: item[4],
+  exam: item[5],
+  diagram: item[6] || null,
+  source: "pg-med-sources/psychiatry",
+}));
+
 const customCards = JSON.parse(localStorage.getItem("customCards") || "[]");
-let cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...entSourceExpansionCards, ...medicineExpansionCards, ...obgExpansionCards, ...pediatricsExpansionCards, ...orthopedicsExpansionCards, ...customCards];
+let cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...entSourceExpansionCards, ...medicineExpansionCards, ...obgExpansionCards, ...pediatricsExpansionCards, ...orthopedicsExpansionCards, ...psychiatryExpansionCards, ...customCards];
 
 const state = {
   subject: "all",
@@ -1869,7 +1929,7 @@ function addAiCard(flashcard) {
     custom: true,
   };
   customCards.push(card);
-  cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...entSourceExpansionCards, ...medicineExpansionCards, ...obgExpansionCards, ...pediatricsExpansionCards, ...orthopedicsExpansionCards, ...customCards];
+  cards = [...baseCards, ...anatomyExpansionCards, ...physiologyExpansionCards, ...biochemistryExpansionCards, ...pathologyExpansionCards, ...pharmacologyExpansionCards, ...microbiologyExpansionCards, ...psmExpansionCards, ...ophthalmologyExpansionCards, ...entExpansionCards, ...entSourceExpansionCards, ...medicineExpansionCards, ...obgExpansionCards, ...pediatricsExpansionCards, ...orthopedicsExpansionCards, ...psychiatryExpansionCards, ...customCards];
   saveCustomCards();
   state.subject = subject;
   state.filter = "all";
