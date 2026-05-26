@@ -48,14 +48,9 @@ The Ask AI tab needs an OpenAI API key. The app is static, so the key is entered
 
 Default model: `gpt-4.1-mini`. You can change the model in the Ask AI tab.
 
-## GitHub Pages
+## Try it out!
 
-This project can be hosted directly from the repository root using GitHub Pages:
-
-1. Push the repository to GitHub.
-2. Open repository Settings.
-3. Go to Pages.
-4. Select deployment from the `main` branch and `/root`.
+https://shreyasudhanva.github.io/pg-med-flashcards/
 
 ## Content Sources
 
